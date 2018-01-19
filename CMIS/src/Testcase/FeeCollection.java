@@ -1,7 +1,14 @@
 package Testcase;
 import java.util.Hashtable;
+
 import org.testng.annotations.Test;
+
+import Keyword.Button;
+import Keyword.DatePicker;
+import Keyword.DropDown;
 import Keyword.Keyword;
+import Keyword.Link;
+import Keyword.TextBox;
 
 public class FeeCollection
 {
@@ -12,20 +19,20 @@ public class FeeCollection
 		
 		try
 		{
-			Keyword.LinkClick("hambugMenu","hambugMenu");
-			Keyword.LinkClick("student","student");
-			Keyword.LinkClick("Collect_Fee","Collect Fees");
-			Keyword.EnterText("Std_id", data.get("Student_id"));
-			Keyword.SelectListValue("Std_id",data.get("Std_id"));
+			Link.Click("hambugMenu","hambugMenu");
+			Link.Click("student","student");
+			Link.Click("Collect_Fee","Collect Fees");
+			TextBox.SetText("Std_id", data.get("Student_id"));
+			DropDown.SelectListValue("Std_id",data.get("Std_id"));
 			System.out.println(data.get("Std_id"));
-			Keyword.EnterText("Fee_amt", data.get("Fee_Amount"));
-			Keyword.EnterText("Fee_Rpt", data.get("Fee_Receipt"));
-			Keyword.datepick("Fee_RvDate", data.get("Receive_Date"));
+			TextBox.SetText("Fee_amt", data.get("Fee_Amount"));
+			TextBox.SetText("Fee_Rpt", data.get("Fee_Receipt"));
+			DatePicker.datepick("Fee_RvDate", data.get("Receive_Date"));
 			Thread.sleep(2000);
-			Keyword.EnterText("Fee_ReceiverID", data.get("Receiver_id"));
-			Keyword.SelectItem("Fee_ReceiverID",data.get("Rece_id"));
+			TextBox.SetText("Fee_ReceiverID", data.get("Receiver_id"));
+			//DropDown.SelectItem("Fee_ReceiverID",data.get("Rece_id"));
 			//Thread.sleep(2000);
-			Keyword.ButtonClick("Add_Fee");
+			Button.Click("Add_Fee");
 			//Keyword.driverQuit();
 			
         }

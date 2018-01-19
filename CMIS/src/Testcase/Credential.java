@@ -1,10 +1,15 @@
 package Testcase;
 import java.util.Hashtable;
+
 import org.testng.ISuiteResult;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import Keyword.Button;
 import Keyword.Keyword;
+import Keyword.TextBox;
+import Utilities.WebDriverSelector;
 
 @Listeners(Utilities.TestListteners.class)
 public class Credential extends Keyword {
@@ -18,7 +23,7 @@ static Keyword functions =new Keyword();
 	{
 		try
 		{
-		 Keyword.LaunchApp("CMIS_url","Chrome");
+		 WebDriverSelector.LaunchApp("itest_url","Chrome");
 		}
 		catch(Exception e)
 		{
@@ -31,10 +36,10 @@ static Keyword functions =new Keyword();
 	{	
 		try {
 			
-			Keyword.EnterText("LoginUserID",data.get("Userid"));
-			Keyword.EnterText("LoginPassword",data.get("Password"));
-			Keyword.ButtonClick("LoginButton");
-			System.out.println(driver.getPageSource().contentEquals("Tamaghna Kumar Banerje"));
+			TextBox.SetText("NAME_LoginUserID",data.get("Userid"));
+			TextBox.SetText("NAME_LoginPassword",data.get("Password"));
+			Button.Click("ID_LoginButton");
+			
 		    } 
 		catch (Exception e) 
 		{

@@ -1,0 +1,9 @@
+#logindata
+NAME_LoginUserID=icon_platform_id
+NAME_LoginPassword=icon_password
+ID_LoginButton=login
+#Link
+hambugMenu=//i[@class='material-icons fa-2x relative']
+xpath_Home=//span[@text()='iMPP']
+#url
+itest_url=https://itest.imerit.net
