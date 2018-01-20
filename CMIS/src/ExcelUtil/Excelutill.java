@@ -2,20 +2,25 @@ package ExcelUtil;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Hashtable;
+
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 		
 	public class Excelutill 
 		{
 				
 		//private static final Object[][] tabArray = null;
-		public static HSSFWorkbook wb;
-		public static HSSFSheet ws;
-		public static  HSSFRow Srow;
-		public static HSSFCell cell;
+		public static XSSFWorkbook wb;
+		public static XSSFSheet ws;
+		public static  XSSFRow Srow;
+		public static XSSFCell cell;
 		public static int totalRow;
 		public static int totalCol;
 		static Hashtable<String,String> table; 
@@ -25,7 +30,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 				    try
 				    {
 				    FileInputStream Scriptfis = new FileInputStream(path);
-				    wb=new HSSFWorkbook(Scriptfis);
+				    wb=new XSSFWorkbook(Scriptfis);
 				    ws = wb.getSheet(Sheetname);
 					}
 				    catch(Exception e)
@@ -41,7 +46,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 			   {
 				
 				FileInputStream Scriptfis = new FileInputStream(FilePath);
-			    wb=new HSSFWorkbook(Scriptfis);
+			    wb=new XSSFWorkbook(Scriptfis);
 			    ws = wb.getSheet(SheetName);
 			    //int StartRow=1;
 			    int StartCol=0;   

@@ -15,36 +15,26 @@ public class Locator {
 	{
 
 		String strlocator;
-		//boolean tokens = locator.contains("XPATH");
-		
 		WebElement webElement = null;
-
-		try{
-
-		if(locator.contains("XPATH")){
-
 		strlocator = ORFile.getlocator(locator).trim();
-		webElement = driver.findElement(By.xpath(strlocator));
-
-		}else if(locator.contains("ID"))
-		{
-		strlocator = ORFile.getlocator(locator).trim();
-		webElement = driver.findElement(By.id(strlocator));
-
-		}else if(locator.contains("NAME")){
-		strlocator = ORFile.getlocator(locator).trim();
-		webElement = driver.findElement(By.name(strlocator));
-
-		}else if(locator.contains("CSS")){
-		strlocator = ORFile.getlocator(locator).trim();
-		webElement = driver.findElement(By.cssSelector(strlocator));
-
-		}else if(locator.contains("LINKTEXT")){
-		strlocator = ORFile.getlocator(locator).trim();
-		webElement = driver.findElement(By.linkText(strlocator));
-		}
-
-		}catch(NoSuchElementException e){
+		String locatorType = strlocator.split(":")[0];
+        String locatorValue = strlocator.split(":")[1];
+        try{
+        switch (locatorType.toLowerCase()){
+        case "id" : webElement = driver.findElement(By.xpath(strlocator));;
+                    break;
+        case "xpath" : webElement = driver.findElement(By.xpath(strlocator));;
+                    break; 
+        case "name" : webElement = driver.findElement(By.xpath(strlocator));;
+                    break;
+        case "css" : webElement = driver.findElement(By.xpath(strlocator));;
+                    break;
+        case "linktext" : webElement = driver.findElement(By.xpath(strlocator));;
+                    break;
+		
+        }
+        }
+        catch(NoSuchElementException e){
 
 		e.printStackTrace();
 		

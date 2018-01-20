@@ -11,7 +11,7 @@ import Keyword.Keyword;
 import Keyword.TextBox;
 import Utilities.WebDriverSelector;
 
-@Listeners(Utilities.TestListteners.class)
+
 public class Credential extends Keyword {
 	
 ISuiteResult result;
@@ -36,9 +36,9 @@ static Keyword functions =new Keyword();
 	{	
 		try {
 			
-			TextBox.SetText("NAME_LoginUserID",data.get("Userid"));
-			TextBox.SetText("NAME_LoginPassword",data.get("Password"));
-			Button.Click("ID_LoginButton");
+			TextBox.SetText("LoginUserID",data.get("Userid"));
+			TextBox.SetText("LoginPassword",data.get("Password"));
+			Button.Click("LoginButton");
 			
 		    } 
 		catch (Exception e) 
