@@ -20,18 +20,20 @@ static NgWebDriver ngDriver;
 	{ 
 		String URL=ORFile.getlocator(url);
 		String browserType=ORFile.getlocator(browser);
+		System.out.println(browserType);
 		try
 		{
 			// if Browser is IE
-			if(browserType.equalsIgnoreCase("IE"))
+			if(browserType.equalsIgnoreCase("Chrome"))
 			{
-				System.setProperty("webdriver.ie.driver", "E:\\IEDriverServer_x64_2.53.1\\IEDriverServer.exe");
-				driver=new InternetExplorerDriver();	
-				driver.get(url);
+				System.setProperty("webdriver.chrome.driver","E:\\Setup\\chromedriver\\chromedriver.exe");
+				driver=new ChromeDriver();	
+				driver.get(URL);
 				driver.manage().window().maximize();
 				ngDriver = new NgWebDriver((JavascriptExecutor) driver);
 				ngDriver.waitForAngularRequestsToFinish();
-			}
+			
+		}
 			// if Browser is Firefox
 			else if(browserType.equalsIgnoreCase("Firefox"))
 			{
@@ -45,14 +47,14 @@ static NgWebDriver ngDriver;
 			// if Browser is Chrome
 			else
 			{
-				System.setProperty("webdriver.chrome.driver","E:\\chromedriver\\chromedriver.exe");
-				driver=new ChromeDriver();	
-				driver.get(URL);
+				System.setProperty("webdriver.ie.driver", "E:\\IEDriverServer_x64_2.53.1\\IEDriverServer.exe");
+				driver=new InternetExplorerDriver();	
+				driver.get(url);
 				driver.manage().window().maximize();
 				ngDriver = new NgWebDriver((JavascriptExecutor) driver);
 				ngDriver.waitForAngularRequestsToFinish();
+			}
 			
-		}
 		}
 		catch(Exception e)
 		{

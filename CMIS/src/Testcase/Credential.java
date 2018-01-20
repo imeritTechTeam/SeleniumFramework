@@ -23,7 +23,7 @@ static Keyword functions =new Keyword();
 	{
 		try
 		{
-		 WebDriverSelector.LaunchApp("itest_url","Chrome");
+		 WebDriverSelector.LaunchApp("itest_url","BrowserName");
 		}
 		catch(Exception e)
 		{

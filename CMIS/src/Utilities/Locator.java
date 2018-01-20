@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 
 public class Locator {
 
-	static WebDriverSelector driver;
+	
 	public static WebElement getWebElement(String locator) throws FileNotFoundException, IOException
 	{
 
@@ -19,17 +19,25 @@ public class Locator {
 		strlocator = ORFile.getlocator(locator).trim();
 		String locatorType = strlocator.split(":")[0];
         String locatorValue = strlocator.split(":")[1];
+        System.out.println(locatorType);
+        System.out.println(locatorValue);
+        
         try{
-        switch (locatorType.toLowerCase()){
-        case "id" : webElement = driver.findElement(By.xpath(strlocator));;
+        switch (locatorType){
+        case "id" :
+        	webElement = WebDriverSelector.driver.findElement(By.id(locatorValue));
                     break;
-        case "xpath" : webElement = driver.findElement(By.xpath(strlocator));;
+        case "xpath" :
+        	webElement = WebDriverSelector.driver.findElement(By.xpath(locatorValue));
                     break; 
-        case "name" : webElement = driver.findElement(By.xpath(strlocator));;
+        case "name" : 
+        	webElement = WebDriverSelector.driver.findElement(By.name(locatorValue));
                     break;
-        case "css" : webElement = driver.findElement(By.xpath(strlocator));;
+        case "css" : 
+        	webElement = WebDriverSelector.driver.findElement(By.cssSelector(locatorValue));
                     break;
-        case "linktext" : webElement = driver.findElement(By.xpath(strlocator));;
+        case "linktext" : 
+        	webElement = WebDriverSelector.driver.findElement(By.linkText(locatorValue));
                     break;
 		
         }
