@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Utilities.Locator;
 import Utilities.ORFile;
@@ -17,8 +19,10 @@ public class TextBox {
 		
 		try
 		{
-		WebElement textbox=Locator.getWebElement(strxpath);
-		textbox.sendKeys(strData);
+		By textboxLocator=Locator.getWebElement(strxpath);
+		WebDriverWait wait = new WebDriverWait(WebDriverSelector.driver, 10);
+		wait.until(ExpectedConditions.elementToBeClickable(textboxLocator)).sendKeys(strData);	
+	
 				
 		}
 		catch(Exception e)
@@ -31,8 +35,9 @@ public class TextBox {
 	{
 		try
 		{
-		WebElement textbox=Locator.getWebElement(strxpath);
-		textbox.getText();
+			By textboxLocator=Locator.getWebElement(strxpath);
+			WebDriverWait wait = new WebDriverWait(WebDriverSelector.driver, 10);
+			wait.until(ExpectedConditions.presenceOfElementLocated(textboxLocator)).getText();
 				
 		}
 		catch(Exception e)

@@ -13,11 +13,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Locator {
 
 	
-	public static WebElement getWebElement(String locator) throws FileNotFoundException, IOException
+	public static By getWebElement(String locator) throws FileNotFoundException, IOException
 	{
 
 		String strlocator;
-		WebElement webElement = null;
+		By ByElement = null;
 		strlocator = ORFile.getlocator(locator).trim();
 		String locatorType = strlocator.split(":")[0];
         String locatorValue = strlocator.split(":")[1];
@@ -25,41 +25,40 @@ public class Locator {
         System.out.println(locatorType);
         System.out.println(locatorValue);
         
-        try{
-        switch (locatorType){
+        try
+        {
+        switch (locatorType)
+        {
         case "id" :
-        	// WebDriverSelector.ngDriver.waitForAngularRequestsToFinish();
-   		    // WebDriverWait wait = new WebDriverWait(WebDriverSelector.driver, 10);
-   		   //  webElement = wait.until(ExpectedConditions.elementToBeClickable(By.id(locatorValue)));
-        	 webElement = WebDriverSelector.driver.findElement(By.id(locatorValue));
-        	
-                    break;
+        	ByElement= By.id(locatorValue);
+        	break;
         case "xpath" :
-        	WebDriverSelector.ngDriver.waitForAngularRequestsToFinish();
-  		     WebDriverWait wait = new WebDriverWait(WebDriverSelector.driver, 10);
-  		     webElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locatorValue)));
-  		   
-        	//webElement = WebDriverSelector.driver.findElement(By.xpath(locatorValue));
-                    break; 
-        case "name" : 
-        	webElement = WebDriverSelector.driver.findElement(By.name(locatorValue));
-                    break;
-        case "css" : 
-        	webElement = WebDriverSelector.driver.findElement(By.cssSelector(locatorValue));
-                    break;
-        case "linktext" : 
-        	webElement = WebDriverSelector.driver.findElement(By.linkText(locatorValue));
-                    break;
+        	ByElement= By.xpath(locatorValue);
+        	break;
+  		case "name" : 
+  			ByElement= By.name(locatorValue);
+  			break;
+       case "css" : 
+    	   ByElement= By.cssSelector(locatorValue);
+    	   break;
+       case "linktext" : 
+    	   ByElement= By.linkText(locatorValue);
+    	   break;
+       case "tag" : 
+    	   ByElement= By.className(locatorValue);
+    	   break;
+       case "class" : 
+    	   ByElement= By.className(locatorValue);
+    	   break;
+           
 		
         }
         }
         catch(NoSuchElementException e){
 
-		e.printStackTrace();
+		System.out.println("Unknown locator"+locatorValue);
 		
 		}
-
-		return webElement;
-
-		}
+        return ByElement;
+	}
 }

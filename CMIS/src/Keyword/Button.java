@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.paulhammant.ngwebdriver.NgWebDriver;
 
@@ -22,16 +24,49 @@ public class Button {
 		try
 		{
 		
-		WebElement button=Locator.getWebElement(strxpath);
-		//WebElement button=((WebElement) driver).findElement(By.xpath(xpath));
-		if(button.isDisplayed())
-		{
-			button.click();
-		}
+		By buttonLocator=Locator.getWebElement(strxpath);
+		WebDriverWait wait = new WebDriverWait(WebDriverSelector.driver, 10);
+		wait.until(ExpectedConditions.elementToBeClickable(buttonLocator)).click();
+		
 		}catch(Exception e)
 		{
 			  e.printStackTrace();
 		}
 		
-	}// Button click function ends
+	}
+	
+	public static void isPresent(String strxpath) throws IOException, InterruptedException
+	{
+		
+		try
+		{
+		
+		By buttonLocator=Locator.getWebElement(strxpath);
+		WebDriverWait wait = new WebDriverWait(WebDriverSelector.driver, 10);
+		wait.until(ExpectedConditions.presenceOfElementLocated(buttonLocator));
+		
+		}catch(Exception e)
+		{
+			  e.printStackTrace();
+		}
+		
+	}
+	public static void isEnable(String strxpath) throws IOException, InterruptedException
+	{
+		
+		try
+		{
+		
+		By buttonLocator=Locator.getWebElement(strxpath);
+		WebDriverWait wait = new WebDriverWait(WebDriverSelector.driver, 10);
+		wait.until(ExpectedConditions.presenceOfElementLocated(buttonLocator)).isEnabled();
+		
+		}catch(Exception e)
+		{
+			  e.printStackTrace();
+		}
+		
+		
+		
+	}
 }
