@@ -6,6 +6,8 @@ import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class Locator {
@@ -19,16 +21,25 @@ public class Locator {
 		strlocator = ORFile.getlocator(locator).trim();
 		String locatorType = strlocator.split(":")[0];
         String locatorValue = strlocator.split(":")[1];
+        
         System.out.println(locatorType);
         System.out.println(locatorValue);
         
         try{
         switch (locatorType){
         case "id" :
-        	webElement = WebDriverSelector.driver.findElement(By.id(locatorValue));
+        	// WebDriverSelector.ngDriver.waitForAngularRequestsToFinish();
+   		    // WebDriverWait wait = new WebDriverWait(WebDriverSelector.driver, 10);
+   		   //  webElement = wait.until(ExpectedConditions.elementToBeClickable(By.id(locatorValue)));
+        	 webElement = WebDriverSelector.driver.findElement(By.id(locatorValue));
+        	
                     break;
         case "xpath" :
-        	webElement = WebDriverSelector.driver.findElement(By.xpath(locatorValue));
+        	WebDriverSelector.ngDriver.waitForAngularRequestsToFinish();
+  		     WebDriverWait wait = new WebDriverWait(WebDriverSelector.driver, 10);
+  		     webElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locatorValue)));
+  		   
+        	//webElement = WebDriverSelector.driver.findElement(By.xpath(locatorValue));
                     break; 
         case "name" : 
         	webElement = WebDriverSelector.driver.findElement(By.name(locatorValue));

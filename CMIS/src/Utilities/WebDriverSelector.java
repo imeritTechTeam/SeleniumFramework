@@ -14,7 +14,7 @@ import com.paulhammant.ngwebdriver.NgWebDriver;
 
 public class WebDriverSelector {
 public static WebDriver driver;
-static NgWebDriver ngDriver;
+public static NgWebDriver ngDriver;
 	
 	public static void LaunchApp(String url,String browser) throws IOException
 	{ 

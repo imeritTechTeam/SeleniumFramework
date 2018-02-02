@@ -7,11 +7,11 @@ import org.testng.annotations.DataProvider;
 
 import Utilities.Testutilities;
 
-public class Std_TestData {
+public class Project_TestData {
 		private String sTestcaseName ;
 		private int iTestcaserow;
 
-		@DataProvider(name="StdCreation_TestData")
+		@DataProvider(name="Project_TestData")
 		public  Object[][]  StdCreation()
 		     {
 			Object[][] TesttabArray=null;
