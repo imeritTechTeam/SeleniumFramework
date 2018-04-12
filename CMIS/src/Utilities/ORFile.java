@@ -13,7 +13,7 @@ public class ORFile
 	String xpath;
 	
 	Properties prop=new Properties();
-    FileInputStream file=new FileInputStream(Utilities.Testutilities.OR_E1);
+    FileInputStream file=new FileInputStream(Utilities.Testutilities.OR_Login);
 	prop.load(file);
 	xpath=prop.getProperty(strxpath);
 	return xpath;

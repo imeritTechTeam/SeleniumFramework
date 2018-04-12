@@ -13,11 +13,11 @@ private int iTestcaserow;
 		Object[][] TesttabArray=null;
 			try
 				{
-					 Excelutill.setExcelFile(Testutilities.TestDataPath, "TD1");
+					 Excelutill.setExcelFile("C:\\Users\\123456\\git\\SeleniumFramework\\CMIS\\iMPP_TestData.xlsx", "TD1");
 					 sTestcaseName = this.toString();
 					 sTestcaseName=Excelutill.getTestCaseName(this.toString());
 					 iTestcaserow=Excelutill.getRowContains(sTestcaseName, 0);
-					 TesttabArray=Excelutill.getDataArray(Testutilities.TestDataPath, "TD1", iTestcaserow);	
+					 TesttabArray=Excelutill.getDataArray("C:\\Users\\123456\\git\\SeleniumFramework\\CMIS\\iMPP_TestData.xlsx", "TD1", iTestcaserow);	
 						
 				}
 			catch(Exception e)

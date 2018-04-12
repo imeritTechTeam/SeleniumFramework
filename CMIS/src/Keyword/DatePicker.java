@@ -12,6 +12,7 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,8 +25,10 @@ import Utilities.WebDriverSelector;
 
 public class DatePicker {
 	
-	static WebDriverSelector driver;
-	public static void DatePicker(String strxpath,String strdata) throws ParseException 
+	WebDriverSelector driver;
+	
+	
+	public  void Datepicker(String strxpath,String strdata) throws ParseException 
 	{
 		
 		try
@@ -92,7 +95,7 @@ public class DatePicker {
 		} 
 	}
 	//Datapick function ends(When Month Year are not drop down 
-	public static void datepick(String strxpath,String strdata) throws InterruptedException, ParseException, FileNotFoundException, IOException
+	public  void datepick(String strxpath,String strdata) throws InterruptedException, ParseException, FileNotFoundException, IOException
 	{
 	
 	int Cal_mon=0;
@@ -242,7 +245,7 @@ public class DatePicker {
 	((WebDriver) driver).findElement(By.xpath("//button[contains(text(),'Close')]")).click();	
 		}	//Datapick function ends(When Month Year are not drop down 
 	
-	public static String get_Date(String date)
+	public String get_Date(String date)
 	
 	{
 	   if(!date.equalsIgnoreCase("Prev")&&!date.equalsIgnoreCase("Next"))

@@ -19,11 +19,11 @@ public class Locator {
 		String strlocator;
 		By ByElement = null;
 		strlocator = ORFile.getlocator(locator).trim();
-		String locatorType = strlocator.split(":")[0];
-        String locatorValue = strlocator.split(":")[1];
+		String locatorType = strlocator.split(";")[0];
+        String locatorValue = strlocator.split(";")[1];
         
-        System.out.println(locatorType);
-        System.out.println(locatorValue);
+        System.out.println("locatorType:"+locatorType);
+        System.out.println("locatorValue:"+locatorValue);
         
         try
         {

@@ -6,29 +6,29 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import Utilities.Locator;
 import Utilities.WebDriverSelector;
 
 public class DropDown 
 {
-	static WebDriverSelector driver;
+	WebDriverSelector driver;
 	
-	public static void SelectListValue(String strxpath,String strdata) throws IOException//String strxpath2
+	public  void SelectValue(String strxpath,String strdata,WebDriver driver) throws IOException//String strxpath2
 	{
 		try
 		{
-			//Thread.sleep(1000);
-			String xpath=Utilities.ORFile.getlocator(strxpath);
-			//Select tag dropdown 
-			if(xpath.contains("select"))
-		    {
-			WebElement Selectlist=((WebDriver) driver).findElement(By.xpath(xpath));
-			Select Listvalue=new Select(Selectlist);
+			By SelectLocator=Locator.getWebElement(strxpath);
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+		    Select Listvalue=new Select(wait.until(ExpectedConditions.presenceOfElementLocated(SelectLocator)));
 			Listvalue.selectByVisibleText(strdata);
-			}
+		}
 			//input tag dropdown 
-			else if(xpath.contains("input"))
+			/*else if(xpath.contains("input"))
 		    {
 				WebElement select=((WebDriver) driver).findElement(By.xpath(xpath));
 				select.click();
@@ -61,9 +61,9 @@ public class DropDown
 				opt.click();
 				    }
 			      }
-			}
+			}*/
 			
-		}
+		
 		catch(Exception e)
 		{
 			e.printStackTrace();

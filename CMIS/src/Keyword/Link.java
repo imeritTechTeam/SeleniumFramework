@@ -3,24 +3,28 @@ package Keyword;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import Utilities.Locator;
 import Utilities.ORFile;
 import Utilities.WebDriverSelector;
 
 public class Link {
 	
-	static WebDriverSelector driver;
-	public static void Click(String strxpath) throws IOException, InterruptedException
+	WebDriverSelector driver;
+	
+	public void Click(String strxpath,WebDriver driver) throws IOException, InterruptedException
 	{
 		try
 		{ 
 			By LinkLocator=Locator.getWebElement(strxpath);
-			WebDriverWait wait = new WebDriverWait(WebDriverSelector.driver, 10);
+			WebDriverWait wait = new WebDriverWait(driver, 70);
 			wait.until(ExpectedConditions.elementToBeClickable(LinkLocator)).click();	
 		}
 		catch(Exception e)
@@ -29,13 +33,29 @@ public class Link {
 		}
 
 		}
-	
-	public static void isPresent(String strxpath) throws IOException, InterruptedException
+	public void JSClick(String strxpath,WebDriver driver) throws IOException, InterruptedException
 	{
 		try
 		{ 
 			By LinkLocator=Locator.getWebElement(strxpath);
-			WebDriverWait wait = new WebDriverWait(WebDriverSelector.driver, 10);
+			WebElement elementToClick = driver.findElement(LinkLocator);
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", elementToClick);			 
+			elementToClick.click();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		}
+	
+	public void isPresent(String strxpath,WebDriver driver) throws IOException, InterruptedException
+	{
+		try
+		{ 
+			By LinkLocator=Locator.getWebElement(strxpath);
+			WebDriverWait wait = new WebDriverWait(driver, 10);
 			wait.until(ExpectedConditions.presenceOfElementLocated(LinkLocator));	
 		}
 		catch(Exception e)
@@ -44,12 +64,12 @@ public class Link {
 		}
 
 		}
-	public static void isEnable(String strxpath) throws IOException, InterruptedException
+	public void isEnable(String strxpath,WebDriver driver) throws IOException, InterruptedException
 	{
 		try
 		{ 
 			By LinkLocator=Locator.getWebElement(strxpath);
-			WebDriverWait wait = new WebDriverWait(WebDriverSelector.driver, 10);
+			WebDriverWait wait = new WebDriverWait(driver, 10);
 			wait.until(ExpectedConditions.presenceOfElementLocated(LinkLocator)).isEnabled();	
 		}
 		catch(Exception e)
