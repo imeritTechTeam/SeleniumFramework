@@ -28,7 +28,7 @@ public class DatePicker {
 	WebDriverSelector driver;
 	
 	
-	public  void Datepicker(String strxpath,String strdata) throws ParseException 
+	public  void Datepicker(String strxpath,String strdata,WebDriver driver) throws ParseException 
 	{
 		
 		try
@@ -56,8 +56,8 @@ public class DatePicker {
 			System.out.println("g_Month"+g_Month);
 			System.out.println("g_Year"+g_Year);
 			
-			WebDriverWait wait = new WebDriverWait((WebDriver) driver, 60);// 1 minute 
-			WebElement dt=((WebDriver) driver).findElement(By.xpath(TstXpath));
+			WebDriverWait wait = new WebDriverWait(driver, 60);// 1 minute 
+			WebElement dt=driver.findElement(By.xpath(TstXpath));
 			
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(TstXpath)));
 			Point pt=dt.getLocation();
@@ -66,26 +66,26 @@ public class DatePicker {
 			int X=pt.getX();
 			int Y=pt.getY();
 			System.out.println("    X"+X+"    Y"+Y);
-			Actions ac = new Actions((WebDriver) driver);
+			Actions ac = new Actions(driver);
 			ac.moveToElement(dt,X,Y).click(dt).perform();
 			//dt.click();
 			//Select Year
 			//New script add 
-			WebElement sel_year=((WebDriver) driver).findElement(By.xpath(YearXpath));
+			WebElement sel_year=driver.findElement(By.xpath(YearXpath));
 			Select Yearval=new Select(sel_year);
 			Yearval.selectByVisibleText(g_Year);
 					
 			//Select month
-			WebElement sel_mon=((WebDriver) driver).findElement(By.xpath(MonXpath));
+			WebElement sel_mon=driver.findElement(By.xpath(MonXpath));
 			Select Monthval=new Select(sel_mon);
 			Monthval.selectByVisibleText(g_Month);
 						
 			//select Date
 			String sel_date="//div[contains(text(),'"+g_Date+"')]";
 			System.out.println(sel_date);
-			WebElement date=((WebDriver) driver).findElement(By.xpath(sel_date));
+			WebElement date=driver.findElement(By.xpath(sel_date));
 			date.click();
-			((WebDriver) driver).findElement(By.xpath("//button[contains(text(),'Close')]")).click();
+			driver.findElement(By.xpath("//button[contains(text(),'Close')]")).click();
 						
 		}
 			
@@ -109,7 +109,7 @@ public class DatePicker {
 	//dr.get("http://jqueryui.com/datepicker/");
 	//driver.switchTo().frame(0);
 	Thread.sleep(4000);
-	WebElement txtbx=((WebDriver) driver).findElement(By.xpath(TstXpath));
+	WebElement txtbx=driver.findElement(By.xpath(TstXpath));
 	txtbx.click();
 	
 	Date tdate=new Date();
@@ -134,8 +134,8 @@ public class DatePicker {
 	String xpath1="//div[contains(text(),";
 	String xpath2="'"+Cur_month+"')]";
 	String xpath=xpath1+xpath2;
-	WebElement dt_month=((WebDriver) driver).findElement(By.xpath(xpath));
-	WebElement dt_Year=((WebDriver) driver).findElement(By.xpath("//div[@class='picker__year']"));
+	WebElement dt_month=driver.findElement(By.xpath(xpath));
+	WebElement dt_Year=driver.findElement(By.xpath("//div[@class='picker__year']"));
 	
 	//Calculate Date difference to count number of Hits
 	
@@ -164,9 +164,9 @@ public class DatePicker {
 	if((g_Year==Cal_Year)&&(g_Month==Cal_mon))
 	{
 		System.out.println("If part");
-		((WebDriver) driver).findElement(By.xpath("//tr")).click();
+		driver.findElement(By.xpath("//tr")).click();
 		//driver.findElement(By.xpath("//tr")).click();
-		WebElement dates=((WebDriver) driver).findElement(By.xpath(d_xpath));
+		WebElement dates=driver.findElement(By.xpath(d_xpath));
 		dates.click();
 		/*for(WebElement dateval: dates)
 		{
@@ -191,12 +191,12 @@ public class DatePicker {
 			          {
 				        System.out.println("Value of I:"+i);
 				        
-				        WebElement dt_next=((WebDriver) driver).findElement(By.xpath("//div[@title='Next month']"));
+				        WebElement dt_next=driver.findElement(By.xpath("//div[@title='Next month']"));
 					    dt_next.click();
 			          }  
-			 ((WebDriver) driver).findElement(By.xpath("//tr")).click();
+			 driver.findElement(By.xpath("//tr")).click();
 	        //List<WebElement> dates=driver.findElements(By.tagName("a"));
-			WebElement dates=((WebDriver) driver).findElement(By.xpath(d_xpath));
+			WebElement dates=driver.findElement(By.xpath(d_xpath));
 			dates.click();
 		   /* for(WebElement dateval: dates)
 			  {
@@ -221,11 +221,11 @@ public class DatePicker {
 			for(int i=1;i<=Prev_diffMonth;i++)
 			    {
 				 System.out.println("Else Value of I:"+i);
-				 WebElement dt_next=((WebDriver) driver).findElement(By.xpath("//div[@title='Previous month']"));
+				 WebElement dt_next=driver.findElement(By.xpath("//div[@title='Previous month']"));
 		         dt_next.click();	
 		        }
-			((WebDriver) driver).findElement(By.xpath("//tr")).click();
-			WebElement dates=((WebDriver) driver).findElement(By.xpath(d_xpath));
+			driver.findElement(By.xpath("//tr")).click();
+			WebElement dates=driver.findElement(By.xpath(d_xpath));
 			dates.click();
 			
 			/*for(WebElement dateval: dates)
@@ -242,7 +242,7 @@ public class DatePicker {
 	        } */ 		
 		}
 			
-	((WebDriver) driver).findElement(By.xpath("//button[contains(text(),'Close')]")).click();	
+	driver.findElement(By.xpath("//button[contains(text(),'Close')]")).click();	
 		}	//Datapick function ends(When Month Year are not drop down 
 	
 	public String get_Date(String date)

@@ -29,7 +29,7 @@ public class Link {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			System.out.println("Unable to click on link"+strxpath);
 		}
 
 		}
@@ -45,7 +45,22 @@ public class Link {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			System.out.println("Unable to click on link "+strxpath);
+		}
+
+		}
+	public void XpathClick(String strxpath,WebDriver driver) throws IOException, InterruptedException
+	{
+		try
+		{ 
+			WebElement elementToClick = driver.findElement(By.xpath(strxpath));
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", elementToClick);			 
+			elementToClick.click();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Unable to click on link"+strxpath);
 		}
 
 		}
@@ -60,7 +75,7 @@ public class Link {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			System.out.println("Link is not present "+strxpath);
 		}
 
 		}
@@ -74,7 +89,7 @@ public class Link {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			System.out.println("Link is not enabled");
 		}
 
 		}
