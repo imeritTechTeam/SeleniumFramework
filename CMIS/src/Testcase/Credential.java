@@ -62,7 +62,7 @@ double peopleShift;
 	@Test(dataProviderClass=ExcelUtil.CredTestData.class,dataProvider="Credential")
 	public void VerifyLogin(Hashtable<String,String> data) 
 	{	
-		double totalPeopleShift=0;
+		double totalPeopleShift;
 		try {
 			test = reports.createTest("Credential Test Case: ");
 			button.GoogleLogin( driver);
@@ -89,7 +89,7 @@ double peopleShift;
 		    	System.out.println("value of i"+i);
 				for(int j=2;j<=col-1;j++)
 			    {
-					
+					totalPeopleShift=0;
 					//*[@id='roster-projects-tabular']/tbody/tr[1]/td[2]//../label[1]
 		    		//String xpath=".//*[@id='roster-projects-tabular']/tbody/tr["+i+"]/td["+j+"]//../label[1]";
 					String xpath=".//*[@id='roster-projects-tabular']/tbody/tr["+i+"]/td[2]//../label[1]";
@@ -107,10 +107,10 @@ double peopleShift;
 					//driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 					for(int k=1;k<inRow;k++)
 				    {
-						Thread.sleep(3000);
+						Thread.sleep(0);
 				    	System.out.println("value of k"+k);
 				    	String innerXpath=".//div[@id='daily-manshift-headcount-modal']//../tr["+k+"]/td[4]";
-				    	Thread.sleep(3000);
+				    	Thread.sleep(0);
 				    	String ShiftCount=(label.xPathGetText(innerXpath,driver));
 				    	//String aa=ShiftCount.toString();
 				    	double Peopleshift=Double.parseDouble(ShiftCount);
@@ -120,8 +120,10 @@ double peopleShift;
 				    	System.out.println("Peopleshift"+totalPeopleShift);
 				    }
 					String labelTotPeopleShift=label.getText("peopleShift",driver);
-					String Totalpeople=labelTotPeopleShift.split("(")[0];
-					String rosterpeople=labelTotPeopleShift.split("(")[1];
+					int x=labelTotPeopleShift.indexOf("(");
+					String Totalpeople=labelTotPeopleShift.substring(0,x);
+					//String Totalpeople=labelTotPeopleShift.split("(")[0];
+					//String rosterpeople=labelTotPeopleShift.split("(")[1];
 					System.out.println("Totalpeople"+Totalpeople);
 					double doblabelTotShift=Double.parseDouble(Totalpeople);
 				//	double labelPeopleShift=Double.parseDouble(labelTotPeopleShift);
