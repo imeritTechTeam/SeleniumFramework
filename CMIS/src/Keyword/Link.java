@@ -29,7 +29,7 @@ public class Link {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Unable to click on link"+strxpath);
+			System.out.println("Unable to click on link");
 		}
 
 		}
@@ -45,7 +45,7 @@ public class Link {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Unable to click on link "+strxpath);
+			System.out.println("Unable to click on link ");
 		}
 
 		}
@@ -60,7 +60,7 @@ public class Link {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Unable to click on link"+strxpath);
+			System.out.println("Unable to click on link");
 		}
 
 		}
@@ -75,7 +75,7 @@ public class Link {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Link is not present "+strxpath);
+			System.out.println("Link is not present ");
 		}
 
 		}

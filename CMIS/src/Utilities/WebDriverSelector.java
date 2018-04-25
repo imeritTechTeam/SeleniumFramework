@@ -78,6 +78,11 @@ public  NgWebDriver ngDriver;
 	{
 		driver.close();
 	}
+	public void waitForAngularRequestsToFinish() {
+		
+		ngDriver.waitForAngularRequestsToFinish();
+		
+	}
 	 
 	
 	}

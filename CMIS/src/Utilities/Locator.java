@@ -16,6 +16,7 @@ public class Locator {
 	public static By getWebElement(String locator) throws FileNotFoundException, IOException
 	{
 
+		
 		String strlocator;
 		By ByElement = null;
 		strlocator = ORFile.getlocator(locator).trim();
@@ -50,15 +51,19 @@ public class Locator {
        case "class" : 
     	   ByElement= By.className(locatorValue);
     	   break;
-           
+      
 		
         }
         }
         catch(NoSuchElementException e){
 
 		System.out.println("Unknown locator"+locatorValue);
+        
+        }
 		
-		}
-        return ByElement;
+		return ByElement;
+	
 	}
+	
+
 }
